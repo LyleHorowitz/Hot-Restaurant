@@ -6,6 +6,7 @@
     <title>Hot Restaurant</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,9 @@
                 <a href="/tables">
                     <button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button>
                 </a>
-                <button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button>
+                <a href="/">
+                    <button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -60,11 +63,33 @@
                 <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
             </div>
         </footer>
+        <script>
+        $("#add-btn").on("click", function(event) {
+            event.preventDefault();
+            alert("Adding your reservation...");
+
+            var answersObj = {
+
+                name: $("#name").val().trim(),
+                phone: $("#phone").val().trim(),
+                email: $("#email").val().trim(),
+                id: $("#id").val().trim()
+
+            };
+
+            //console.log(answersObj);
+
+            // Make post request to backend listener and pass newCharacter object.
+            $.post("/api/new", answersObj).done(function(data) {
+                console.log(data);
+                alert("Adding character...");
+                window.location = "/tables";
+            });
+
+
+        });
+        </script>
     </div>
 </body>
 
 </html>
-Add Comment Collapse
-
-
-
