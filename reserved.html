@@ -79,12 +79,15 @@
 
             //console.log(answersObj);
 
+
             // Make post request to backend listener and pass newCharacter object.
             $.post("/api/new", answersObj).done(function(data) {
                 console.log(data);
                 alert("Adding character...");
                 window.location = "/tables";
             });
+
+
 
             
         });
@@ -93,3 +96,4 @@
 </body>
 
 </html>
+
