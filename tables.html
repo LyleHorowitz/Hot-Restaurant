@@ -50,6 +50,27 @@
         </div>
     </footer>
     </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    app.get("/api/:reservation?", function(req, res) {
+        var chosen = req.params.reservation;
+
+        if (chosen) {
+            console.log(chosen);
+
+            for (var i = 0; i < reservation.length; i++) {
+                if (chosen === reservation[i].routeName) {
+                    return res.json(reservation[i]);
+                }
+            }
+            return res.json(false);
+        }
+        return res.json(reservation);
+    });
+});
+</script>
+
 </body>
 
 </html>
